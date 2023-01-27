@@ -1,16 +1,28 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 function App() {
+  const [personas,setpersonaje] = useState([]);
   useEffect(() => {
     async function apidata() {
       const resp = await fetch("https://rickandmortyapi.com/api/character");
       const data = await resp.json();
-      console.log("", data);
+   
+      setpersonaje(data.results)
     }
     apidata();
   }, []);
 
-  return <h1>sfsf</h1>;
+  return (
+    <div>
+      {
+        personas.map(persona => {
+          return (
+            <div> {persona.name} </div>
+          )
+        })
+       }
+    </div>
+  );
 }
 
 export default App;
