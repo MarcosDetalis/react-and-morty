@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 
 function App() {
+
+
   const [personas,setpersonaje] = useState([]);
   useEffect(() => {
     async function apidata() {
@@ -17,12 +19,22 @@ function App() {
       {
         personas.map(persona => {
           return (
-            <div> {persona.name} </div>
-          )
+            <ul key={persona.image}  >
+              <li>
+                <p>{persona.name}</p>
+              </li>
+              <li>
+                <img src={persona.image} alt={persona.name} />
+              </li>
+            </ul>
+          );
         })
        }
     </div>
   );
+
+
+
 }
 
 export default App;
